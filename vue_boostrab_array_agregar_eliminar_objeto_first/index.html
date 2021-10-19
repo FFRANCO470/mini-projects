@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>app FF_03</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div id='app' class="container">
+        <!-- titulo -->
+        <h2 style="margin-top: 40px">Tablas</h2>
+
+        <!-- INPUT DEL NOMBRE CANT Y PRECIO -->
+        <form class="form-inline">
+            <h5>Nombre</h5>
+            <input v-model="nombre" class="form-control" type="text" style="margin-left: 20px" placeholder="Producto">
+            <h5 style="margin-left: 20px">Cant</h5>
+            <input v-model="cant" class="form-control" type="number" style="margin-left: 20px ; width : 100px">
+            <h5 style="margin-left: 20px">Crecio</h5>
+            <input v-model="precio" class="form-control" type="number" style="margin-left: 20px ; width : 100px">
+        </form>
+        
+        <!-- BOTONES -->
+        <button class="btn btn-secondary" type="button" style="margin-top: 25px" v-on:click="agregar" >agregar</button>
+        <button class="btn btn-secondary" type="button" style="margin-top: 25px;margin-left:25px" v-on:click="calculate" >probar 1</button>
+        <button class="btn btn-secondary" type="button" style="margin-top:  25px;margin-left:25px" v-on:click="calculate2" >probar 2</button>
+
+        <!-- tabla -->
+        <table class="table table-bordered table-striped" style="margin-top: 25px" >
+        
+        <!-- encabezado de la tabla -->
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Cant</th>
+                    <th>Precio</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+        <!-- llenar las filas de la tabla con estos datos-->
+                <!-- <tr>
+                    <th>manzana</th>
+                    <th>1</th>
+                    <th>2</th>
+                </tr>
+                <tr>
+                    <th>pear</th>
+                    <th>1</th>
+                    <th>2</th>
+                </tr> -->
+        <!-- llenar la tabla con los tados de una matriz-->
+        <!-- con v-for recorre los elementos del arraydatos 3 y con objeto trae los seleccionados] -->
+                <!-- <tr v-for="objeto in arraydatos3">
+                    <th v-text="objeto.nombre"></th>
+                    <th v-text="objeto.cant"></th>
+                    <th v-text="objeto.precio"></th>
+                </tr>  -->
+
+        <!-- llenar la tabla con un array, llenando el array con los datos introducidos-->
+                <!-- (objeto,index) del objeto obtengame el index -->
+                <!-- <tr v-for="objeto in arraydatos4" >
+                    <th v-text="objeto.nombre"></th>
+                    <th v-text="objeto.cant"></th>
+                    <th v-text="objeto.precio"></th>
+                </tr> -->
+
+        <!-- llenar la tabla con un array, llenando el array con los datos introducidos con opcion de eliminarlos-->
+                <tr v-for="(objeto,index) in arraydatos4" :key="`objeto-${index}`">
+                    <th v-text="objeto.nombre"></th>
+                    <th v-text="objeto.cant"></th>
+                    <th v-text="objeto.precio"></th>
+                    <th>
+                        <button class="btn btn-danger" v-on:click="eliminar(index)"><i class="fa fa-trash"></i></button>
+                    </th>
+                </tr>
+
+            </tbody>
+            
+        </table>
+    </div>
+
+    
+    <script src="js/vue.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+    <!-- FRANCISCO FRANCO FF_01 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.COHILADOS DEL FONCE FF_01</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container" id='app'>
+        <h3>6.Valor del salario diario de un empleado en cohilados del fonce, teneiendo encuenta que:</h3>
+        <ul>
+            <li>valor de hora laboral : 5000</li>
+            <li>valor de hora extra : 1000</li>
+        </ul>
+        <label>Ingrese las horas trabajadas:</label>
+        <input type="double" v-model="hours" class="form-control" name="test" min=0 oninput="validity.valid||(value='');"><br>
+        <button type="button" v-on:click="calculate" class="btn btn-primary">calcular</button>
+        <h6>El valor a pagar es de ($):</h6>
+        <h5 class="text-muted" v-text="salary"></h5>
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="js/ejercicio6.js"></script>
+</body>
+</html>

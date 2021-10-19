@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>app FF_00</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div id='app' class="container">
+
+      <div class="form-group">
+        <label>Nombre</label>
+        <input v-model="nombre" type="text" class="form-control" placeholder="NOMBRE" style="width: 250px">
+        <label>Edad</label>
+        <input v-model="edad" type="number" class="form-control" style="width: 80px">
+      </div>
+
+      <button class="btn btn-primary" type="button" v-on:click='prueba' >prueba</button>
+      <button class="btn btn-primary" type="button" v-on:click='agregar' >agregar</button>
+      <button class="btn btn-primary" type="button" v-on:click='validaredad' >validar edad</button>
+
+      <div class="container" style="margin-top: 50px">
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="exampleRadios"  value="camisa" v-model="tipocompra" >
+          <label class="form-check-label" for="exampleRadios1">Camisa</label>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="exampleRadios"  value="pantalon" v-model="tipocompra" >
+          <label class="form-check-label" for="exampleRadios2">Pantalon</label>
+        </div>
+
+      </div>
+
+      <div class="form-group" >
+        <label>Numero comprado</label>
+        <input v-model="compra"  min=0 type="number" class="form-control" style="width: 250px">
+        <button style="margin-top: 20px" type="button" class="btn btn-primary " v-on:click='calcular' >calcular</button>
+      </div>
+
+      <div class="form-group" >
+        <label>Valor a pagar</label>
+        <h6 class="text-muted" v-text="total"></h6>
+      </div>
+      
+    </div>
+    
+    <script src="js/vue.js"></script>
+    <script src="js/sweetalert2.all.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+    <!-- FRANCISCO FRANCO -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.NUMERO MAYOR FF_01</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container" id='app'>
+        <h5 style="margin-top: 12px;" >4.LEER UN ENTERO POSITIVO Y MOSTRAR SU MAYOR</h5>
+        <label style="margin-top: 12px;" >Inserte el numero positivo : </label>
+        <input style="margin-top: 12px;"  type="number" v-model="num1" name="test" min=0 oninput="validity.valid||(value='');"><br>
+        <button style="margin-top: 12px;"  type="button" v-on:click="add" class="btn btn-primary" >validar</button>
+        <h5 style="margin-top: 12px;" >Numero mayor:</h5>
+        <h5 style="margin-top: 12px;"  class="text-mute" v-text="num2"></h5>
+
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="js/ejercicio4.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+    <!-- FRANCISCO FRANCO FF_02 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.FRUTERIA FF_02</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container" id='app'>
+        <h3>FRUTERIA 3</h3>
+        <div class="row">
+            <div class="col">
+                <label>Ingrese el costo del kilo de manzana:</label>
+                <input type="number" class="form-control" v-model="price" min=0>
+                <label>Ingrese los kilo de manzana:</label>
+                <input type="number" class="form-control" v-model="apple" min=0>
+                <button type="button" class="btn btn-primary" v-on:click="calculate" >Calcular</button>
+                <form><label>El total a pagar es de:</label></form>
+                <h3 class="text-muted" v-text="total"></h3>
+            </div>
+            <div class="col">
+                <img src="img/cereza.jpg">    
+            </div>
+        </div>
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="js/ejercicio2.js"></script>
+</body>
+</html>

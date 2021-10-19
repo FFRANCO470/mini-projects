@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- FRANCISCO FRANCO FF_01 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10.ZAPATERIA FF_01</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container" id='app'>
+        <h3>10.ZAPATERIA NOMINA </h3>
+        <form><label>Para calcular el valor a cancelar se debe tener en cuenta: </label></form>
+        <ul>
+            <li>Horas trabajadas : 6300</li>
+            <li>Zapatos ensamblados : 1000</li>
+        </ul>
+        <form><label>Ingrese el numero de horas trabajadas: </label></form>
+        <input type="double" v-model="hours" class="form-control" name="test" min=0 oninput="validity.valid||(value='');"><br>
+        <form><label>Ingrese el numero de zapatos ensamblados: </label></form>
+        <input type="double" v-model="shoes" class="form-control" name="test" min=0 oninput="validity.valid||(value='');"><br>
+        <button type="button" v-on:click="calculate" class="btn btn-primary">CALCULAR</button>
+        <form><label>El total a pagar es de ($): </label></form>
+        <h6 class="text-muted" v-text="salary"></h6>
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="js/ejercicio10.js"></script>
+</body>
+</html>

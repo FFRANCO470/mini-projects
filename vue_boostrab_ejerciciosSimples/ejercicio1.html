@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+    <!-- FRANCISCO FRANCO -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.INTERCAMBIO FF_01</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container" id='app'>
+        <h5 style="margin-top: 12px;">1.INTERCAMBIO DE NUMERO</h5>
+        <label style="margin-top: 12px;" >inserte el numero 1</label>
+        <input  style="margin-top: 12px;" type="number" v-model="num1" class="form-control">
+        <label style="margin-top: 12px;" >inserte el segundo 2</label>
+        <input  style="margin-top: 12px;" type="number" v-model="num2" class="form-control">
+        <button style="margin-top: 12px;" type="button" v-on:click="exchange" class="btn btn-primary">evaluar</button>
+        <h5 style="margin-top: 12px;">los numeros son: </h5>
+        <h5 style="margin-top: 12px;">Numero 1 : </h5>
+        <h5 style="margin-top: 12px;" class="text-mute" v-text="num4"></h5>
+        <h5 style="margin-top: 12px;">Numero 2 : </h5>
+        <h5 style="margin-top: 12px;" class="text-mute" v-text="num3"></h5>
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="js/ejercicio1.js"></script>
+</body>
+</html>

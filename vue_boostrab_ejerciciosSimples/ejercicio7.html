@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+    <!-- FRANCISCO FRANCO FF_01 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.COSTO FF_01</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container" id='app'>
+        <h3>7.COSTO TOTAL</h3>
+        <label>Inserte las unidades requeridas</label>
+        <input type="double" v-model="units" class="form-control" name="test" min=0 oninput="validity.valid||(value='');"><br>
+        <button type="button" v-on:click="calculate" class="btn btn-primary">costo</button>
+        <h6>El costo es de :</h6>
+        <h5 class="text-muted" v-text="cost"></h5>
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="js/ejercicio7.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es  ">
+    <!-- FRANCISCO FRANCO FF_02 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.NOTAS FF_02</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container-fluid" id='app'>
+        <div class="row">
+            <div class="col">
+                <h3>1.Nivel de notas </h3>
+                <label>Ingrese el numero total de preguntas</label>
+                <input type="double" v-model.number="questions" class="form-control" name="test" min=0 oninput="validity.valid||(value='');"><br>
+                <label>Ingrese el numero de respuestas correctas</label>
+                <input type="double" v-model.number="answers" class="form-control" min=0 oninput="validity.valid||(value='');"><br>
+                <button type="button" class="btn btn-primary" v-on:click="calculate">Calcular</button>
+                <h3>La nota es :</h3>
+                <h3 class="text-muted" v-text="nivel"></h3>
+            </div>
+            <div class="col-3">
+                <img src="img/sena.png" >
+            </div>
+        </div>
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="js/ejercicio1.js"></script>
+    <!-- <img src="img/sena.png" width="300px" height="300px" > -->
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>app FF_00</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body style ="background:#80239e">
+    <div id='app' class="container">
+
+      <div class="row">
+        <div class="col">
+          <div class="card" style="margin-top: 20px; height: 450px;">
+            <div class="card-body">
+              <div class="form-group">
+                <label style="margin-top: 20px;">----largo de una cadena--------</label>
+                <input style="margin-top: 20px;" v-model="largoCadenaInput" type="text" class="form-control" placeholder="contar caracteres" style="width: 250px">
+                <button style="margin-top: 20px;" class="btn btn-primary form-control" type="button" v-on:click='largoCadena' >validar</button>
+                <label style="margin-top: 20px;" >{{largoCadenaOutput}}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col">
+          <div class="card" style="margin-top: 20px; height: 450px;">
+            <div class="card-body">
+              <div class="form-group">
+                <div>
+                  <label style="margin-top: 20px;">-----Encontrar parte de una cadena----</label>
+                </div>
+                <label style="margin-top: 20px;">cadena</label>
+                <input style="margin-top: 20px;" v-model="cadena" type="text" class="form-control" placeholder="cadena de texto" style="width: 250px">
+                <label style="margin-top: 20px;">pedazo de cadena</label>
+                <input style="margin-top: 20px;" v-model="parteCadena" type="text" class="form-control" placeholder="cadena de texto" style="width: 250px">
+                <button style="margin-top: 20px;" class="btn btn-primary form-control" type="button" v-on:click='encontrarParteCadena' >validar</button>
+                <label style="margin-top: 20px;" >{{respuesta}}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+        <div class="col">
+          <div class="card" style="margin-top: 20px;height: 450px;">
+            <div class="card-body">
+              <div class="form-group">
+                <label style="margin-top: 20px;">----pasar mayuscula y minusculas--------</label>
+                <input style="margin-top: 20px;" v-model="mayusculaMinuscula" type="text" class="form-control" placeholder="contar caracteres" style="width: 250px">
+                <button style="margin-top: 20px;" class="btn btn-primary form-control" type="button" v-on:click='pasarMinusculasMayusuculas' >validar</button>
+                <label style="margin-top: 20px;" >Mayusculas : {{mayuscula}}</label>
+                <div>
+                  <label style="margin-top: 20px;" >Minuscula : {{minuscula}}</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <div class="card" style="margin-top: 20px; height: 450px; width: 90%;">
+              <div class="card-body">
+                <div class="form-group">
+                  <div>
+                    <label style="margin-top: 20px;">-----Unir cadenas de texto----</label>
+                  </div>
+                  <label style="margin-top: 20px;">cadena 1</label>
+                  <input style="margin-top: 20px;" v-model="cadena1" type="text" class="form-control" placeholder="cadena de texto" style="width: 250px">
+                  <label style="margin-top: 20px;">cadena 2</label>
+                  <input style="margin-top: 20px;" v-model="cadena2" type="text" class="form-control" placeholder="cadena de texto" style="width: 250px">
+                  <button style="margin-top: 20px;" class="btn btn-primary form-control" type="button" v-on:click='unirCadenas' >validar</button>
+                  <label style="margin-top: 20px;" >{{cadenaUnida}}</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="card" style="margin-top: 20px; height: 320px;width: 90%;">
+              <div class="card-body">
+                <div class="form-group">
+                  <div>
+                    <label style="margin-top: 20px;">---quitar espacio---</label>
+                  </div>
+                  <label style="margin-top: 20px;">cadena con espacios</label>
+                  <input style="margin-top: 20px;" v-model="cadenaEspacio" type="text" class="form-control" placeholder="cadena de texto" style="width: 250px">
+                  <button style="margin-top: 20px;" class="btn btn-primary form-control" type="button" v-on:click='quitarEspacios' >validar</button>
+                  <label style="margin-top: 20px;" >{{cadenaSinEspacio}}</label>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+        <div class="col">
+          <div class="card" style="margin-top: 20px; height: 800px;">
+            <div class="card-body">
+              <div class="form-group">
+                <div>
+                  <label style="margin-top: 20px;">---pedazos de un texto segun dos posiciones---</label>
+                </div>
+                <div>
+                  <label style="margin-top: 20px;">9 - 1(primer caracter tomado) = 8(total tomados)</label>
+                </div>
+                <label style="margin-top: 20px;">cadena</label>
+                <input style="margin-top: 20px;" v-model="cadenaPosiciones" type="text" class="form-control" placeholder="cadena de texto" style="width: 250px">
+                <label style="margin-top: 20px;">pocision 1</label>
+                <input style="margin-top: 20px;" v-model="pocision1" type="number" class="form-control" placeholder="cadena de texto" style="width: 250px">
+                <label style="margin-top: 20px;">pocision 2</label>
+                <input style="margin-top: 20px;" v-model="pocision2" type="number" class="form-control" placeholder="cadena de texto" style="width: 250px">
+                <button style="margin-top: 20px;" class="btn btn-primary form-control" type="button" v-on:click='cadenaPorPocision' >validar</button>
+                <div><label style="margin-top: 20px;" >slice: {{cadenaConPosicionslice}}</label></div>
+                <div><label style="margin-top: 20px;" >substring: {{cadenaConPosicionssubString}}</label></div>
+                <div><label style="margin-top: 20px;" >substring al reves: {{cadenaConPosicionssubStringContrario}}</label></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col">
+
+        </div>
+
+
+      </div>
+
+      
+      
+      
+
+      
+
+
+        
+
+
+    </div>
+    
+    <script src="js/vue.js"></script>
+    <script src="js/sweetalert2.all.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

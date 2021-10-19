@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOMINA</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div id='app' class="container">
+        
+                
+        <div style="margin-top: 50px" class="container">
+            <h5 style="margin-top: 50px">NOTAS</h5>
+            <table  class="table table-bordered ">
+                <thead class="thead-dark">
+                    <tr><th colspan="4" class="text-center">RESUMEN GENERAL</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Programacion:</td>
+                        <td>Parciales:</td>
+                        <td><input type="number" v-model="pp1" class="form-control"></td>
+                        <td><input type="number" v-model="pp2" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Quices:</td>
+                        <td><input type="number" v-model="pq1" class="form-control"></td>
+                        <td><input type="number" v-model="pq2" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Trabajos:</td>
+                        <td><input type="number" v-model="pt1" class="form-control"></td>
+                        <td><input type="number" v-model="pt2" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td>Calculo:</td>
+                        <td>Parciales:</td>
+                        <td><input type="number" v-model="cp1" class="form-control"></td>
+                        <td><input type="number" v-model="cp2" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Quices:</td>
+                        <td><input type="number" v-model="cq1" class="form-control"></td>
+                        <td><input type="number" v-model="cq2" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td>Quimica:</td>
+                        <td>Parciales:</td>
+                        <td colspan="2"><input type="number" v-model="qp1" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Quices:</td>
+                        <td colspan="2"><input type="number" v-model="qq1" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Trabajos:</td>
+                        <td colspan="2"><input type="number" v-model="qt1" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Proyecto integrador:</td>
+                        <td colspan="2"><input type="number" v-model="i" class="form-control"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button style="margin-top: 30px" type="button" class="btn btn-primary" v-on:click="calcular">Calcular</button>
+        </div>
+
+        <div style="margin-top: 50px" class="container">
+            <table class="table table-bordered ">
+                <thead class="thead-dark">
+                    <tr><th colspan="3" class="text-center">FINALES GENERAL</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Programacion:</td>
+                        <td v-text="p"></td>
+                        <td v-text="pm"></td>
+                    </tr>
+                    <tr>
+                        <td>Calculo:</td>
+                        <td v-text="c"></td>
+                        <td v-text="cm"></td>
+                    </tr>
+                    <tr>
+                        <td>Quimica:</td>
+                        <td v-text="q"></td>
+                        <td v-text="qm"></td>
+                    </tr>
+                    <tr>
+                        <td>Promedio general:</td>
+                        <td v-text="general"></td>
+                        <td v-text="generalm"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="js/colegio.js"></script>
+     
+</body>
+</html>

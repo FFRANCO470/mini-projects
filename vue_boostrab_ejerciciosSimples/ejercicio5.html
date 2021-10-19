@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+    <!-- FRANCISCO FRANCO -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.COSTO AGUA FF_01</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container" id='app'>
+        <h3 style="margin-top: 12px;" >5.CALCULAR EL COSTO DEL RECIBO DEL AGUA SEGUN LA TASA RETIBUTIVA</h3>
+        <label style="margin-top: 12px;" >Inserte la cantidad de metros cubicos</label>
+        <input style="margin-top: 12px;"  type="double" v-model="num1" class="form-control" name="test" min=0 oninput="validity.valid||(value='');"><br>
+        <label style="margin-top: 12px;" >La tasa retibutiva es de $5 por metro cubico</label>
+        <button style="margin-top: 12px;"  type="button" v-on:click="calculate" class="btn btn-primary">calcular</button>
+        <h6 style="margin-top: 12px;" >El total a pagar es de ($):</h6>
+        <h6 style="margin-top: 12px;"  class="text-muted" v-text="cost"></h6>
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="js/ejercicio5.js"></script>
+</body>
+</html>

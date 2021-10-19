@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOMINA</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div id='app' class="container">
+        <div class="row">
+            <div class="col">
+                <h5 style="margin-top: 50px">Teniendo en cuenta que:</h5>
+                <ul>
+                    <li>Valor hora normal: $4200</li>
+                    <li>Valor hora extra: $6300</li>
+                </ul>
+                <h5 style="margin-top: 50px">DATOS MENSUALES</h5>
+                <form class="form-inline">
+                    <h6 style="margin-top: 30px;margin-left: 50px;">Horas trabajadas:</h6>
+                    <input placeholder="HORAS MENSUALES"style="margin-top: 30px;margin-left: 10px;" type="number" class="form-control" min=0 v-model="horas">
+                    <button style="margin-top: 30px;margin-left: 20px;" type="button" class="btn btn-primary" v-on:click="calcular">Calcular</button>
+                </form>
+            </div>
+            <div class="col"><img src="img/logo.png"></div> 
+        </div>
+        <div style="margin-top: 50px" class="container">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr><th colspan="4" class="text-center">NOMINA EMPLEADO</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Horas normales:</td>
+                        <td v-text="normal"></td>
+                        <td>Horas extra:</td>
+                        <td v-text="extra"></td>
+                    </tr>
+                    <tr>
+                        <td>Porcentaje bonificacion:</td>
+                        <td v-text="pbon"></td>
+                        <td>Valor bonificacion:</td>
+                        <td v-text="bon"></td>
+                    </tr>
+                    <tr></tr>
+                        <td>Porcentaje impuestos:</td>
+                        <td v-text="pimp"></td>
+                        <td>impuestos:</td>
+                        <td v-text="imp"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">TOTAL</th>
+                        <th v-text="total"span="2" class="text-center"></th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="js/main.js"></script>
+     
+</body>
+</html>

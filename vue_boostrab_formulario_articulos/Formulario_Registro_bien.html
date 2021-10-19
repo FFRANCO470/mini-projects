@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-html2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="bg-image" style="background-image: url('https://userscontent2.emaze.com/images/100255c7-fd8c-41b5-9375-c6f6b7d7e8fe/d75f03e4-057b-4d2d-ba6d-2650c1b57afcimage14.jpg');background-repeat: no-repeat;background-size: cover;">
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    
+        <div id="app" class="container" >
+
+            <nav class="navbar navbar-light bg-light" style="margin-top: 80px;">
+                <div class="container-fluid">
+                    <form class="d-flex container">
+                        <input class="form-control me-2" type="search" placeholder="Search" v-model="articulo">
+                        <!-- <button class="btn btn-outline-success" type="button" v-on:click="resultadoBusqueda(buscando)">Buscar</button> -->
+                    </form>
+                </div>
+            </nav>
+            <!-- <div style="margin-top: 20px;">
+                <li v-for="item in buscando"  class="list-group-item" v-if="articulo" >
+                    {{item.nombre}} ||  precio : {{item.precio}}  || cantidad : {{item.cantidad}}
+                </li>
+            </div> -->
+
+            <h2 style="margin-top: 40px ;text-align: center">Grilla de datos</h2>
+            <table class="table table-bordered table-striped" style="margin-top: 25px" >
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Costo</th>
+                        <th>Cantidad</th>
+                        <th>Proveedor</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>Ganancia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr v-for="(producto,index) in productos" :key="`producto-${index}`"  :style= "[producto.cantidad<1 ? {'color':'red'} : producto.cantidad>49 ? {'color':'blue'} : {'color':'black'}]" > -->
+                    <tr v-for="(producto,index) in buscando" :key="`producto-${index}`"  :style= "[producto.cantidad<1 ? {'color':'red'} : producto.cantidad>49 ? {'color':'blue'} : {'color':'black'}]" >
+                        <th >{{producto.nombre}}</th>
+                        <th >{{producto.precio}}</th>
+                        <th >{{producto.costo}}</th>
+                        <th >{{producto.cantidad}}</th>
+                        <th >{{producto.proveedor}}</th>
+                        <th><button class="btn btn-primary" v-on:click="aumentar(index)"><i class="fa fa-plus-circle" ></i></button></th>
+                        <!-- <th><button class="btn btn-primary" v-on:click="producto.cantidad++"><i class="fa fa-plus-circle" ></i></button></th> -->
+                        <th><button class="btn btn-primary" v-on:click="disminuir(index)"><i class="fa fa-minus-circle"></i></button></th>
+                        <th><button class="btn btn-primary" v-on:click="eliminar(index)"><i class="fa fa-trash-o"></i></button></th>
+                        <th>{{(producto.precio-producto.costo)*producto.cantidad}}</th>
+                    </tr>       
+                </tbody>   
+            </table>            
+            <form style="width: 650px; margin: auto" v-on:submit.prevent="agregar" >
+                <section style="border:black 1px solid; padding: 30px; border-radius: 4px">
+                    <h2 style="margin-top: 40px ;text-align: center">Formulario de registro de datos para inventario</h2>
+                    <div class="input-group mb-3 ">
+                        <span class="input-group-text" style="width: 200px">Nombre del producto</span>
+                        <input type="text" class="form-control"  v-model.trim="nombre" value="nombre" required style="text-transform:lowercase">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" style="width: 200px">Cantidad del producto</span>
+                        <input type="number" class="form-control" v-model.trim="cantidad" required min="0">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" style="width: 200px">Precio del producto</span>
+                        <input type="number" class="form-control" v-model.trim="precio" required min="0">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" style="width: 200px">Costo del producto</span>
+                        <input type="number" class="form-control" v-model.trim="costo" required min="0">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" style="width: 200px">Proveedor del producto</span>
+                        <input type="text" class="form-control" v-model.trim="proveedor" required style="text-transform:lowercase">
+                    </div>
+                    <div class="d-grid gap-2"><button class="btn btn-primary" type="submit" >AGREGAR</button></div>
+                </section>
+            </form>
+            <div >
+                <h3 style="margin-top: 40px ; margin-left: 120px;">Costo total del inventario : {{costoTotal}}</h3>
+                <h3 style="margin-top: 40px ; margin-left: 120px;">Precio total del inventario : {{precioTotal}}</h3>
+                <h3 style="margin-top: 40px ; margin-left: 120px;">Ganancia total del inventario : {{precioTotal-costoTotal}}</h3>
+                <!-- <h3 style="margin-top: 40px ; margin-left: 120px;">Ganancia total del inventario : {{gananciaTotal}}</h3> -->
+            </div>  
+    </div>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data:{
+                productos:[
+                    {nombre:"lavadora", proveedor:"samsung",precio:1000,cantidad:20, costo:800},
+                    {nombre:"tv", proveedor:"lg",precio:1200,cantidad:0, costo:700},
+                    {nombre:"licuadora", proveedor:"oster",precio:200,cantidad:30, costo:100},
+                    {nombre:"plancha",proveedor:"lg",precio:300,cantidad:18, costo:150}
+                ],
+                nombre:'',
+                precio:'',
+                costo:'',
+                proveedor:'',
+                cantidad:'',
+                articulo:'',
+                buscados:[],
+                resultadosBuscados:[],
+            },
+            methods: {
+                resultadoBusqueda(objeto){
+                    this.resultadosBuscados.push({nombre:objeto.nombre,precio:2,cantidad:3});
+                },
+                aumentar(pocision){
+                    if (this.productos[pocision].cantidad==49) {
+                        alert(`A alcanzado el numero maximo de cantidades de ${this.productos[pocision].nombre}`)
+                        this.productos[pocision].cantidad++;
+                    } else {
+                        this.productos[pocision].cantidad++;
+                    }
+                },
+                disminuir(pocision){
+                    if (this.productos[pocision].cantidad==1) {
+                        alert(`A alcanzado el numero minimo de cantidades de ${this.productos[pocision].nombre}`)
+                        this.productos[pocision].cantidad--;
+                    }else if (this.productos[pocision].cantidad<=0) {
+                        alert(`No se aceptan cantidades negativas de ${this.productos[pocision].nombre}`)
+                    } else {
+                        this.productos[pocision].cantidad--;
+                    } 
+                },
+                eliminar(pocision){
+                    this.productos.splice(pocision,1);
+                },
+                agregar(){
+                    this.productos.push({nombre:this.nombre.toLocaleLowerCase(),
+                                        proveedor:this.proveedor.toLocaleLowerCase(),
+                                        precio:this.precio,
+                                        cantidad:this.cantidad,
+                                        costo:this.costo});
+                    this.nombre='';
+                    this.cantidad='';
+                    this.proveedor='';
+                    this.precio='';
+                    this.costo='';
+                }
+            },
+            computed:{
+                buscando(){
+                    this.articulo = this.articulo.toLocaleLowerCase();
+                    return this.buscados = this.productos.filter((item) => item.nombre.includes(this.articulo));
+                },
+                costoTotal(){
+                    return this.productos.reduce((suma,producto)=>{
+                        return suma + (producto.costo*producto.cantidad);
+                    },0)
+                },
+                precioTotal(){
+                    return this.productos.reduce((suma,producto)=>{
+                        return suma + (producto.precio*producto.cantidad);
+                    },0)
+                },
+                gananciaTotal(){
+                    return this.productos.reduce((suma,producto)=>{
+                        return suma + ((producto.precio-producto.costo)*producto.cantidad);
+                    },0)
+                }
+            }
+        })
+    </script>
+    
+
+    </body>
+</html>

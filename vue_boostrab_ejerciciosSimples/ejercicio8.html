@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+    <!-- FRANCISCO FRANCO FF_01 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8.NOMINA SEMANAL FF_01</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container" id='app'>
+        <h3>8.NOMINA SEMANAL</h3>
+        <form><label>Tenga en cuenta que:</label></form>
+        <ul>
+            <li>Hora laboral :         3200</li>
+            <li>Hora extra :           4300</li>
+            <li>Riesgo profesional :     5%</li>
+            <li>Seguridad social :      10%</li>
+            <li>Bonificacion :           8%</li>
+        </ul>
+        <form ><label>Inserte el numero de horas semanal</label></form>
+        <input type="double" v-model="hours" class="form-control" name="test" min=0 oninput="validity.valid||(value='');"><br>
+        <button type="button" v-on:click="calculate" class="btn btn-primary">CALCULAR</button>
+        <form><label>El valor a cancelar es de ($): </label></form>
+        <h6 class="text-muted" v-text="salary"></h6>
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="js/ejercicio8.js"></script>
+</body>
+</html>

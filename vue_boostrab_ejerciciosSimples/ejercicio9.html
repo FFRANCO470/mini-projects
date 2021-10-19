@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- FRANCISCO FRANCO FF_001 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9.NOMINA DIARIA FF_01</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container" id='app'>
+        <h3>9.Calcular el valor a pagar por un dia laborado</h3>
+        <form><label>Tenga en cuenta que:</label></form>
+        <ul>
+            <li>Salario basico : 520000</li>
+            <li>Hora extra : 5800</li>
+        </ul>
+        <form><label>Ingrese las horas diarias:</label></form>
+        <input type="double" v-model="hours" class="form-control" name="tes" min=0 oninput="validity.valid||(value='');"><br>
+        <button type="button" v-on:click="calculate" class="btn btn-primary">calcular</button>
+        <form></form><label>El valor a cancelar es de ($):</label></form>
+        <h6 class="text-muted" v-text="salary"></h6>
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="js/ejercicio9.js"></script>
+</body>
+</html>

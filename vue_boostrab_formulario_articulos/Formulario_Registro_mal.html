@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-html2</title>
+</head>
+<body>
+    <div id="app" >
+        <h1>Grilla de datos</h1>
+        <table style="border-spacing: 1px; border: red 1px solid; color:black;">
+            <tr>
+              <td style=" border: red 1px solid"><strong>Nombre</strong></td>
+              <td style=" border: red 1px solid"><strong>Precio</strong></td>
+              <td style=" border: red 1px solid"><strong>Costo</strong></td>
+              <td style=" border: red 1px solid"><strong>Cantidad</strong></td>
+              <td style=" border: red 1px solid"><strong>Proveedor</strong></td>
+              <td style=" border: red 1px solid"><strong></strong></td>
+              <td style=" border: red 1px solid"><strong></strong></td>
+              <td style=" border: red 1px solid"><strong>Ganancia</strong></td>
+            </tr>
+                <tr v-for="(producto, i) in productos">
+                  <td :style="[producto.cantidad<1 ? {'border':'red 1px solid','color':'red'} : {'border':'red 1px solid','color':'black' } ]"  ><strong>Nombre: {{producto.nombre}}</strong></td>
+                  <td :style="[producto.cantidad<1 ? {'border':'red 1px solid','color':'red'} : {'border':'red 1px solid','color':'black' } ]"  ><strong>Precio: {{producto.precio}}</strong></td>
+                  <td :style="[producto.cantidad<1 ? {'border':'red 1px solid','color':'red'} : {'border':'red 1px solid','color':'black' } ]"  ><strong>Costo: {{producto.costo}}</strong></td>
+                  <td :style="[producto.cantidad<1 ? {'border':'red 1px solid','color':'red'} : {'border':'red 1px solid','color':'black' } ]"  ><strong>Cantidad: {{producto.cantidad}}</strong></td>
+                  <td :style="[producto.cantidad<1 ? {'border':'red 1px solid','color':'red'} : {'border':'red 1px solid','color':'black' } ]"  ><strong>Proveedor: {{producto.proveedor}}</strong></td>
+                  
+                  <td style=" border: red 1px solid"><input type="button"  @click='sumar' value="+"></td>
+                  <td style=" border: red 1px solid"><input type="button"  @click='restar' value="-"></td>
+                  <td :style="[producto.cantidad<1 ? {'border':'red 1px solid','color':'red'} : {'border':'red 1px solid','color':'black' } ]"><strong>{{(producto.precio - producto.costo)*producto.cantidad}}</strong></td>
+                  <td style="height:50px"></td>
+                </tr>
+        </table>
+        <br>
+        <br>
+        <h1>Formulario de registro de datos para inventario</h1>
+        <label for="">Digite el nombre del producto</label>
+        <input type="text"  placeholder="Nombre"><br>
+        <label for="">Digite el precio</label>
+        <input type="text" placeholder="Precio"><br>
+        <label for="">Digite el costo</label>
+        <input type="text"  placeholder="Costo"><br>
+        <label for="">Digite el nombre del proveedor</label>
+        <input type="text"  placeholder="Proveedor"><br>
+        <input type="button" @click="" value="Agregar"><br>
+        <hr>
+        <h3>Costo total del inventario</h3>
+        <h3>Precio total del inventario</h3>
+        <h1>Ganacia total</h1>
+
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js" ></script>
+    <script>
+    const app= new Vue({
+        el:"#app",
+        data:{  
+            
+            productos:[
+            {nombre:"lavadora", proveedor:"samsung",precio:1000,cantidad:20, costo:800},
+            {nombre:"tv", proveedor:"lg",precio:1200,cantidad:0, costo:700},
+            {nombre:"licuadora", proveedor:"oster",precio:200,cantidad:30, costo:100},
+            {nombre:"plancha",proveedor:"lg",precio:300,cantidad:18, costo:150},]
+        },
+        computed:{
+           
+            
+        }, methods: {
+            sumar(){
+                alert('sumo');
+            },
+            restar(){
+                alert('restar');
+            }
+        },
+    })
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>app FF_02</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div id='app'>
+        <div class="container-fluid">
+            <h2>BANCO SENA</h2>
+            <!-- primera interfaz cueando estado vale 0 -->
+            <!-- estado es igual a sero muesreme esto -->
+            <div v-show="estado==0">
+                <h4>Bienvenido, ingrese su clave</h4>
+                    <div class="form-group col-4">
+                        <label>Clave 4 dígitos</label>
+                        <input type="password" class="form-control" v-model="pin" maxlength="4">
+                    </div>
+                    <button type="button" v-on:click="validar" class="btn btn-primary" >Continuar</button>
+            </div>
+
+
+
+            <!-- oculta la primera interfaz y muestra la segunda interfaz -->
+            <div v-show="estado==1">
+                
+                <div class="form-check form-check-inline">
+                    <input v-model="tipo" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="c">
+                    <label class="form-check-label" for="inlineRadio1">Consignar</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input v-model="tipo" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="r">
+                    <label class="form-check-label" for="inlineRadio2">Retirar</label>
+                </div>
+
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group">
+                        <label>Valor</label>
+                        <input style="margin-top: 100px" type="number" v-model.number ="valor" class="form-control" name="test" min=0 oninput="validity.valid||(value='');"><br>
+                        </div>
+                        <button type="submit" class="btn btn-primary" v-on:click="operacion">Procesar</button>
+                    </div>
+                    <div class="col">
+                        <h4>Su saldo es de : </h4>
+                        <h4 class="text-muted" v-text="saldo"></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="js/cajero.js"></script>
+</body>
+</html>
