@@ -1,0 +1,61 @@
+const articulos = [
+    {id:1, idCategoria:1, producto: 'Monitor 20 Pulgadas', precio: 500},
+    {id:2, idCategoria:2, producto: 'Televisión 50 Pulgadas', precio: 700},
+    {id:3, idCategoria:5, producto: 'Tablet', precio: 300},
+    {id:4, idCategoria:3, producto: 'Audífonos', precio: 200},
+    {id:5, idCategoria:3, producto: 'Teclado', precio: 50},
+    {id:6, idCategoria:5, producto: 'Celular', precio: 500},
+    {id:7, idCategoria:3, producto: 'Bocinas', precio: 300},
+    {id:8, idCategoria:4, producto: 'Laptop', precio: 800},
+    {id:9, idCategoria:1, producto: 'Monitor 24 Pulgadas', precio: 290},
+    {id:10, idCategoria:2, producto: 'Televisor de 22 pulgadas', precio: 1290}
+    ];
+    const categorias=[
+    {id:1, descripcion:"Monitores"},
+    {id:2, descripcion:"Televisores"},
+    {id:3, descripcion:"Periféricos"},
+    {id:4, descripcion:"Computadores"},
+    {id:5, descripcion:"Tablets y Celulares"},
+    {id:6, descripcion:"Impresoras"}
+    ]
+
+let categoriaBuscada = 'Periféricos';
+// funcion para buscar la categoria
+let getCategoria=(categoriaBuscada)=>{
+    return new Promise((resolve, reject)=>{
+        let categoriaBD = categorias.find(categoria => categoria.descripcion === categoriaBuscada);
+        (categoriaBD) ? resolve(categoriaBD) : reject(`no hay una categoria ${categoriaBuscada}`)
+    })
+}
+//funcion para buscar el articulo segun la categoria
+let getArticulo = (categoria) => {
+    return new Promise((resolve, reject)=>{
+        let articuloBD = articulos.filter(articulo=> articulo.idCategoria === categoria.id);
+        (articuloBD)?resolve([categoria.descripcion, articuloBD]):reject(`no hay articulos para la categoria ${categoria.descripcion}`)
+    })
+}
+//llamar la funcion para encuentrar la categoria
+getCategoria(categoriaBuscada)
+    //si existe la categoria
+    .then(categoria => {
+        //llamar funcion para encontrar articulo segun la categoria
+        getArticulo(categoria)
+            // si existe articulo
+            .then(arrai => {
+                //separa el array
+                let [cate, arti] = arrai;
+                console.log(`para la categoria ${cate} hay:`);
+                // si no hay articulos
+                if(arti.length ==0){
+                    console.log('no hay articulos');
+                }
+                //si hay articulos
+                else{
+                    arti.forEach(element => {console.log(`${element.producto} y cuesta ${element.precio}`);});
+                }  
+            })
+            //si no existe artiuclo
+            .catch(err => console.log(`no hay`));
+    })
+    //no existe la categoria
+    .catch(err => console.log(err));
