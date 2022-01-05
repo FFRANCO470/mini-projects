@@ -1,0 +1,55 @@
+const articulos = [
+    {id: 1, idCategoria: 1, producto: 'Monitor 20 Pulgadas', precio: 500},
+    {id: 2, idCategoria: 2, producto: 'Televisión 50 Pulgadas', precio: 700},
+    {id: 3, idCategoria: 5, producto: 'Tablet', precio: 300},
+    {id: 4, idCategoria: 3, producto: 'Teclado', precio: 200},
+    {id: 5, idCategoria: 3, producto: 'Celular', precio: 50},
+    {id: 6, idCategoria: 5, producto: 'Bocinas', precio: 500},
+    {id: 7, idCategoria: 3, producto: 'Laptop', precio: 300},
+    {id: 8, idCategoria: 4, producto: 'Laptop', precio: 800},
+    {id: 9, idCategoria: 1, producto: 'Monitor 24 Pulgadas', precio: 290},
+    {id: 10, idCategoria: 2, producto: 'Television de 22 pulgadas', precio: 1290}
+]
+
+const categorias = [
+    {id: 1, descripcion: 'Monitores'},
+    {id: 2, descripcion: 'Televisores'},
+    {id: 3, descripcion: 'Periféricos'},
+    {id: 4, descripcion: 'Computadores'},
+    {id: 5, descripcion: 'Tablets y Celulares'},
+    {id: 6, descripcion: 'Impresoras'},
+]
+
+let categoriaBuscada = 'Impresoras';
+
+let getCategoria = (categoriaBuscada, callback)=>{
+    let categoriaBD = categorias.find(categoria => categoria.descripcion == categoriaBuscada);
+    if(categoriaBD){
+        callback(null, categoriaBD);
+    }else{
+        callback(`La categoria ${categoriaBuscada} no fue encontrada`);
+    }
+}
+
+let getArticulo = (categoriaBD, callback)=>{
+    let articuloBD = articulos.filter(articulo => articulo.idCategoria === categoriaBD.id);
+    if(articuloBD.length>0){
+        callback(null, [categoriaBD.descripcion, articuloBD]);
+    }else{
+        callback(`No hay articulos para la categoria ${categoriaBD.descripcion}`);
+    }
+}
+
+getCategoria(categoriaBuscada, (err, categoria)=>{
+    if(err) return console.log(err);
+
+    getArticulo(categoria, (err, articulosCategoria)=>{
+        if(err) return console.log(err);
+
+        let [cate, arti] = articulosCategoria;
+        console.log(`En la categoria ${cate} hay:`);
+        arti.forEach(element => {
+            console.log(`${element.producto} y cuesta $ ${element.precio}`);
+        });
+    });
+});
