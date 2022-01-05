@@ -1,0 +1,69 @@
+// buscar salrio de acuerdo al empleado
+
+let empleados = [
+    {id: 1, nombre: 'Miguel'},
+    {id: 2, nombre: 'Yenny'},
+    {id: 3, nombre: 'Maria'}
+]
+
+let salarios = [
+    {id: 1, salario: 1000},
+    {id: 2, salario: 2000}
+]
+
+// funcion para buscar empleado
+let getEmpleado = (id,callback) =>{
+
+    // buscar el empleado
+    let empleadoBD = empleados.find( empleado => empleado.id == id);
+
+    // validar si existe
+    if(empleadoBD){
+
+        // si existe enviar usuario
+        callback(null,empleadoBD);
+    }else{
+
+        // si no existe enviar error
+        callback(`empleado con id: ${id} no existe`);
+    }
+}
+
+// funcion para buscar salario
+let getSalario=(empleado, callback)=>{
+
+    // buscar salario
+    let salarioBD = salarios.find(salario=> salario.id==empleado.id);
+
+    // validar si existe el salario
+    if(salarioBD){
+
+        // si existe salario enviar un objeto
+        callback(null, {
+            id: empleado.id,
+            nombre : empleado.nombre,
+            salario : salarioBD.salario
+        });
+    }else{
+
+        // si no existe mandar error
+        callback(`No hay salario para ${empleado.nombre}`); 
+    }
+}
+
+// ejecutar la sentencia de buscar un salario segun el empleado
+getEmpleado(4, (err, empleado)=>{
+
+    // si existe error terminar funcion
+    if(err) return console.log(err);
+
+    // si existe empleado ejecutar funcion para buscar salario
+    getSalario(empleado, (err, empleadoSalario)=>{
+
+        // si no existe salario imprimir error
+        if(err) return console.log(err);
+        
+        // si existe salario emprimirlo con el empleado
+        console.log(`El empleado de ${empleadoSalario.nombre} es de ${empleadoSalario.salario}`);
+    })
+});
