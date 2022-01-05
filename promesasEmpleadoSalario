@@ -1,0 +1,63 @@
+let empleados = [
+    {id: 1, nombre: 'Miguel'},
+    {id: 2, nombre: 'Yenny'},
+    {id: 3, nombre: 'Maria'}
+]
+
+let salarios = [
+    {id: 1, salario: 1000},
+    {id: 2, salario: 2000}
+]
+
+let getEmpleado =(id)=>{
+    //parametro 1 es bien parametro 2 es mal
+    return new Promise((resolve, reject)=>{
+
+        // buscar empleado
+        let empleadoBD = empleados.find(empleado => empleado.id==id);
+
+        //validar si existe empleado
+        (empleadoBD) ? resolve(empleadoBD) : reject(`No existe empleado con id: ${id}`);
+    })
+}
+
+let getSalario = (empleado)=>{
+    return new Promise((resolve, reject)=>{
+
+       // buscar salario 
+        let salarioBD = salarios.find(salario => salario.id==empleado.id);
+
+        // validar salario
+        (salarioBD) ? resolve({empleado: empleado.nombre, salario:salarioBD.salario}) : reject(`No existe salario para ${empleado.nombre}`);
+    })
+}
+
+
+// ejecutar funcion para buscar empleado
+getEmpleado(1)
+    .then(empleado=>{
+        
+        // si existe ejecutar funcion de buscar salario
+        getSalario(empleado)
+            .then(empleado=>{
+
+                // si existe salario imprimirlo
+                console.log(`${empleado.empleado} tiene un salario de ${empleado.salario}`);
+            })
+            .catch(err=>{
+
+                //si no existe salario imprimir error
+                console.log(err);
+            });
+    })
+    .catch(err=>{
+
+        //si no existe empeleado imprimir error
+        console.log(err);
+    });
+
+//ejecutar funcion para buscar empleado es lo mismo que lo anterior
+getEmpleado(1)
+    .then(empleado=> {return getSalario(empleado)})
+    .then(empleado=>console.log(`${empleado.empleado} tiene un salario de ${empleado.salario}`))
+    .catch(err=>console.log(err));
