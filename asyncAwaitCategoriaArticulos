@@ -1,0 +1,61 @@
+const articulos = [
+    {id:1, idCategoria:1, producto: 'Monitor 20 Pulgadas', precio: 500},
+    {id:2, idCategoria:2, producto: 'Televisión 50 Pulgadas', precio: 700},
+    {id:3, idCategoria:5, producto: 'Tablet', precio: 300},
+    {id:4, idCategoria:3, producto: 'Audífonos', precio: 200},
+    {id:5, idCategoria:3, producto: 'Teclado', precio: 50},
+    {id:6, idCategoria:5, producto: 'Celular', precio: 500},
+    {id:7, idCategoria:3, producto: 'Bocinas', precio: 300},
+    {id:8, idCategoria:4, producto: 'Laptop', precio: 800},
+    {id:9, idCategoria:1, producto: 'Monitor 24 Pulgadas', precio: 290},
+    {id:10, idCategoria:2, producto: 'Televisor de 22 pulgadas', precio: 1290},
+];
+const categorias=[
+    {id:1, descripcion:"Monitores"},
+    {id:2, descripcion:"Televisores"},
+    {id:3, descripcion:"Periféricos"},
+    {id:4, descripcion:"Computadores"},
+    {id:5, descripcion:"Tablets y Celulares"},
+    {id:6, descripcion:"Impresoras"},
+]
+
+let categoriaBuscada ='Impresras';
+// Funcion para buscar y capturar la categoria
+let getCategoria=(categoriaBuscada)=>{
+    let categoriaBD = categorias.find(categoria => categoria.descripcion === categoriaBuscada);
+    if (!categoriaBD) {
+        throw `No hay una categoria ${categoriaBuscada}`;
+    } else {
+        return categoriaBD
+    }
+}
+//Funcion para buscar y capturar los articulos de acuerdo a la categoria
+let getArticulo=(categoria)=>{
+    let articuloBD = articulos.filter(articulo => articulo.idCategoria === categoria.id);
+    if (!articuloBD) {
+        throw `No hay articulos en la categoria ${categoria.descripcion}`
+    } else {
+        return [categoria.descripcion , articuloBD]
+    }
+}
+// Funcion que invoca la funcion de buscar y captruar categoria y articulos
+let getLista = async (categoriaBuscada)=>{
+    try {
+        let cate = await getCategoria(categoriaBuscada);
+        let arti = await getArticulo(cate);
+        let categoriaLista = arti[0];
+        let articulosLista = arti[1];
+        console.log(categoriaLista);
+        if (articulosLista.length <1) {
+            console.log('no hay articulos');
+        } else {
+            articulosLista.forEach(element => {
+                console.log(`${element.producto} y su costo es ${element.precio}`);
+            }); 
+        }
+    } catch (error) {
+        console.log(error);   
+    }
+}
+// Invocar la funcion para traer los articulos de acuerdo a la categoria
+getLista(categoriaBuscada);
