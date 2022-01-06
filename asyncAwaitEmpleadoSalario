@@ -1,0 +1,41 @@
+let empleados = [
+    {id: 1, nombre: 'Miguel'},
+    {id: 2, nombre: 'Yenny'},
+    {id: 3, nombre: 'Maria'}
+]
+
+let salarios = [
+    {id: 1, salario: 1000},
+    {id: 2, salario: 2000}
+]
+
+let getEmpleado = (id)=>{
+    let empleadoBD = empleados.find(empleado => empleado.id === id);
+    if(!empleadoBD){
+        throw `No existe empleado con id ${id}`;
+    }else{
+        return empleadoBD
+    }
+}
+
+
+let getSalario = (empleado)=>{
+    let salarioBD = salarios.find(salario => salario.id === empleado.id);
+    if(!salarioBD){
+        throw `No existe salario para el id ${empleado.id}`;
+    }else{
+        return salarioBD
+    }
+}
+
+let getInformacion = async(id) =>{
+    try {
+        let empleado = await getEmpleado(id);
+        let salario = await getSalario(empleado);
+        console.log(`El empleado ${empleado.nombre} tiene un saldo de $ ${salario.salario}` );
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+getInformacion(3);
