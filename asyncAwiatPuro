@@ -1,0 +1,26 @@
+const sleep = require('util').promisify(setTimeout);
+
+const funcion1 = async()=>{
+    await sleep(4000);
+    console.log('Primer mensaje');
+}
+
+const funcion2 = async()=>{
+    await sleep(1000);
+    console.log('segundo mensaje');
+}
+
+const funcion3 = async()=>{
+    await sleep(2000);
+    console.log('Tercer mensaje');
+}
+
+const algoritmo = async()=>{
+    console.log('Inicio');
+    await funcion1();
+    await funcion2();
+    await funcion3();
+    console.log("fin");
+}
+
+algoritmo();
