@@ -1,0 +1,42 @@
+let data = [
+    {producto: "Camisas", ciudad: "Medellin", ventas: 1, costo: 10},
+    {producto: "Zapatos", ciudad: "Medellin", ventas: 2, costo: 10},
+    {producto: "Chaquetas", ciudad: "Medellin", ventas: 3, costo: 10},
+    {producto: "Sombreros", ciudad: "Medellin", ventas: 4, costo: 10},
+    {producto: "Camisas", ciudad: "Cali", ventas: 5, costo: 10},
+    {producto: "Zapatos", ciudad: "Cali", ventas: 6, costo: 10},
+    {producto: "Chaquetas", ciudad: "Cali", ventas: 7, costo: 10},
+    {producto: "Sombreros", ciudad: "Cali", ventas: 8, costo: 10},
+    {producto: "Camisas", ciudad: "Bogota", ventas: 9, costo: 10},
+    {producto: "Zapatos", ciudad: "Bogota", ventas: 10, costo: 10},
+    {producto: "Chaquetas", ciudad: "Bogota", ventas: 11, costo: 10},
+    {producto: "Sombreros", ciudad: "Bogota", ventas: 11, costo: 10},
+];
+
+// tabla dinamica
+const resultado = {
+    //valores unicos
+    list:[],
+};
+
+let columna = 'ciudad';
+let agrupador = 'costo';
+
+for (let index in data) {
+    const dato = data[index];
+
+    // busque el dato dentro de la lista unica sino esta agregelo
+    if(resultado.list.indexOf(dato[columna]) == -1){
+        // meter al array de valores unicos
+        resultado.list.push(dato[columna]);
+        //crear propiedad con el valor
+        resultado[dato[columna]] = {};
+        //crear el contador
+        resultado[dato[columna]][agrupador] = 0;
+    }
+
+    resultado[dato[columna]][agrupador] += dato[agrupador]
+     
+}
+
+console.log(resultado);
