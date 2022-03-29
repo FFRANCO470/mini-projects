@@ -1,0 +1,565 @@
+iniciar archivo js
+	node file.js
+
+imprimir en consola
+	console.log("texto en consola");
+
+nueva linea \n
+un tabulador \t
+una comilla simple \'
+una comilla doble \"
+una barra inclinada \\
+
+	<script type="text/javascript">
+		var mensaje = "Hola Mundo! \n Qué facil es incluir \'comillas simples\' \n y \"comillas dobles\" ";
+		alert(mensaje);
+	</script>
+
+contar caracteres
+	const producto = 'Monitor 20 Pulgadas';
+	const precio = '30 USD'
+	console.log(producto.length);
+	>>19
+
+posicion de un caracter la P esta en la posicion 11
+	const producto = 'Monitor 20 Pulgadas';
+	let posicionBien = producto.indexOf("Pulgadas");
+	let posicionMal = producto.indexOf("pulgadas");
+	console.log(posicionBien);
+	console.log(posicionMal);
+	>>11
+	>>-1
+
+existencia de un texto dentro de otro
+	const producto = 'Monitor 20 Pulgadas';
+	let existeBien = producto.includes("Pulgadas");
+	let existeMal = producto.includes("pulgadas");
+	console.log(existeBien);
+	console.log(existeMal);
+	>>true
+	>>false
+
+minuscula y mayuscula
+	const producto = 'Monitor 20 Pulgadas';
+	let mayucula = producto.toUpperCase();
+	let minuscula = producto.toLocaleLowerCase();//detecta idioma
+	console.log(mayucula);
+	console.log(minuscula);
+	>>MONITOR 20 PULGADAS
+	>>monitor 20 pulgadas
+
+unir dos textos
+	const producto = 'Monitor 20 Pulgadas';
+	const precio = '30 USD'
+	let union1 = producto.concat(precio);
+	let union2 = producto +" " + precio
+	let union3 = `El producto ${producto } tiene un costo de ${precio}`
+	console.log(union1)
+	console.log(union2)
+	console.log(union3)
+	>>Monitor 20 Pulgadas30 USD
+	>>Monitor 20 Pulgadas 30 USD
+	>>El producto Monitor 20 Pulgadas tiene un costo de 30 USD
+
+quitar espacios
+	const producto = '         Monitor 20 Pulgadas    ';
+	const sinEspaciosInicio = producto.trimStart();
+	const sinEspaciosFinal = producto.trimEnd();
+	const sinEspaciosTodo = producto.trim();
+	console.log(sinEspacios)
+	>>Monitor 20 Pulgadas       <<
+	>>      Monitor 20 Pulgadas<<
+	>>Monitor 20 Pulgadas<<
+
+trozo de un texto
+	const prodcuto = 'Monitor 20 Pulgadas';
+	const cortado1 = prodcuto.slice(0,12); //no toma la ultima posicion
+	const cortado2 = prodcuto.substring(5,10);
+	const cortado3 = prodcuto.substring(10,5);
+	console.log(cortado1);
+	console.log(cortado2);
+	console.log(cortado3);
+	>>Monitor 20 P
+	>>or 20
+	>>or 20
+
+	const cortado4 = prodcuto.charAt(0);
+	console.log(cortado4)
+	>>M
+
+repetir texto
+	const texto = "en promosion ".repeat(3)
+	console.log(texto)
+	>>en promosion en promosion en promosion
+
+separar texto
+	const prodcuto = 'Monitor de 20 Pulgadas marca Samsung';
+	const separado = prodcuto.split(" ");
+	console.log(separado);
+	>>[''Monitor','de','20','Pulgadas','marca','Samsung']
+
+contador y acumulador
+	let puntaje = 5;
+	puntaje++;
+	puntaje+=5;
+	puntaje = puntaje +1;
+	++puntaje;
+	puntaje--;
+
+formato numero
+	const numero = 4;
+	const numeroOtro = "s";
+	const numero2 = Number.isInteger(numero);
+	const numero3 = Number.isInteger(numeroOtro);
+	console.log(numero2);
+	console.log(numero3);
+	>>true
+	>>false
+
+objetos 
+	const producto = {
+		nombre : "Monitor de 30 pulgadas",
+		precio : 30,
+		disponible : true
+	}
+	
+	console.log(producto.disponible)
+	>>true
+	console.log(producto['disponible'])
+	>>true
+
+objetos desctructuracion
+	const producto = {
+		nombre : "Monitor de 30 pulgadas",
+		precio : 30,
+		disponible : true
+	}
+
+	const {nombre,disponible:libre} = producto
+	console.log(nombre)
+	console.log(libre)
+	>>Monitor de 30 pulgadas
+	>>true
+
+
+objeto agregar eliminar propiedades
+	const producto = {
+		nombre : "Monitor 30 pulgadas",
+		precio : 30,
+		disponible : true,
+	}
+
+	producto.imagen = "foto.png";
+	delete producto.nombre;
+	console.log(producto);
+	>>{ precio: 30, disponible: true, imagen: 'foto.png' }
+
+objetos metodos
+	const superman = {
+		alias : "superman",
+		nombre : "clark",
+		apellido : "kent",
+		poder: "rayos x",
+		getNombreCompleto: function(){
+			return `${this.nombre} ${this.apellido}`
+		}
+	}
+
+	console.log(superman.getNombreCompleto());
+	>>clark kent
+
+objetos dentro de objetos
+	const superman = {
+		alias : "superman",
+		nombre : "clark",
+		apellido : "kent",
+		poderes: {
+			poder1 : "rayos x",
+			poder2 : "volar",
+			poser3 : "fuerza",
+			ejemplo : {
+				llave1: "clave1",
+				llave2: "clave2"
+			}
+		}
+	}
+
+	const {
+			nombre, 
+			poderes:{
+				poder2,
+				ejemplo:{ llave1 }
+			}
+		} = superman;
+
+	console.log(`${nombre} => ${poder2} => ${llave1}`);
+
+largo de un array
+	const numero = [10, 20, 30, 40, 50];
+	console.log(numero.length);
+	>>5
+
+modificar array
+	const numero = [10, 20, 30, 40, 50];
+	console.log(numero);
+	numero[2]= 5000;
+	console.log(numero);
+	>>[10, 20, 30, 40, 50]
+	>>[10, 20, 5000, 40, 50]
+
+recorrer array
+	const  meses = new Array('Enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio');
+	for (let i = 0; i < meses.length; i++) {
+    	console.log(meses[i]);
+	}
+	>>Enero
+	>>febrero
+	>>.....y as i con los otros
+
+recorrer array de objetos
+	const carrito = [
+		{nombre: 'Monitor 20 pulgadas', precio: 500},
+		{nombre: 'Televisor 50 pulgadas', precio: 700},
+		{nombre: 'Tablet', precio: 300},
+		{nombre: 'Audifonos', precio: 200},
+		{nombre: 'Teclados', precio: 50},
+		{nombre: 'Celular', precio: 500}
+	]
+
+	carrito.forEach(function(producto){
+		console.log(`Articulo: ${producto.nombre}`);
+	})
+
+	>>Articulo: Monitor 20 pulgadas
+	>>Articulo: Televisor 50 pulgadas
+	>>Articulo: Tablet
+	>> y asi sucesivamente
+
+recorrer un array y crear uno nuevo
+	carrito.map(function(producto){
+		console.log(`Articulo: ${producto.nombre}`);
+	})
+	>>Articulo: Monitor 20 pulgadas
+	>>Articulo: Televisor 50 pulgadas
+	>>Articulo: Tablet
+	>> y asi sucesivamente
+
+
+
+elemento de un array dentro de otro array
+	const deTodo = ['hola', 10, true, 'si', null, {nombre:'juan', trabajo:'programador'},[1, 2, 3, 'a']];
+	console.log(deTodo[6][3]);
+	>>a
+
+elemento de un objeto dentro de un array	
+	const deObjetos = [
+		{nombre : 'angelica', edad: 20, trabajo: 'programador'},
+		{nombre : 'yeni', edad: 20, trabajo: 'programador'},
+		{nombre : 'gabriela', edad: 20, trabajo: 'programador'},
+	]
+	console.log(deObjetos[1].trabajo);
+	>>programador
+
+agregar elementos a un array forma 1 imperativa
+	const carrito = [];
+
+	const producto1 = {nombre : 'Monitor de 20 pulgadas', precio : 200}
+	const producto2 = {nombre : 'Tablet Android', precio : 125}
+	const producto3 = {nombre : 'Teclado', precio : 15}
+
+	carrito.push(producto1);//uno detras del otro
+	carrito.push(producto2);
+	carrito.unshift(producto3);//uno delate del otro
+	console.log(carrito);
+	>>[
+		{ nombre: 'Teclado', precio: 15 },
+		{ nombre: 'Monitor de 20 pulgadas', precio: 200 },
+		{ nombre: 'Tablet Android', precio: 125 }
+	]
+agregar elemento a un array forma 2 declarativa
+	let carrito = [];
+
+	const producto1 = {nombre : 'Monitor de 20 pulgadas', precio : 200}
+	const producto2 = {nombre : 'Tablet Android', precio : 125}
+	const producto3 = {nombre : 'Teclado', precio : 15}
+
+	carritoNew = [...carrito,producto1];
+	carritoNew = [...carritoNew,producto2];
+	carritoNew = [producto3,...carritoNew];
+	console.log(carritoNew);
+	>>[
+		{ nombre: 'Teclado', precio: 15 },
+		{ nombre: 'Monitor de 20 pulgadas', precio: 200 },
+		{ nombre: 'Tablet Android', precio: 125 }
+	]
+
+eliminar primer elemento  de un array
+	carrito.shift();
+
+eliminar ultimo elemento de un array
+	carrito.pop();
+
+
+eliminar un trozo de una array
+	carrito.splice(parece aca, elimine de donde esta paradao hasta el # indicado)
+	carrito.splice(1,1);//parece en la posicion uno y borre el elemeto de esa posicion
+
+destructurar array
+	const numeros = [10, 20, 30, 40, 50];
+	const [primero, segundo, , cuarto] = numeros;
+	console.log(primero, segundo, cuarto);
+	>>10 20 40
+
+destructurar array por pedazos
+	const numeros = [10, 20, 30, 40, 50];
+	const [primero, segundo, ...resto] = numeros;
+	console.log(primero, segundo, resto);
+	>>10 20 [ 30, 40, 50 ]
+
+	const [primero, segundo,, ...resto] = numeros;
+	console.log(primero, segundo, resto);
+	>>10 20 [ 40, 50 ]
+
+unir dos array
+	const meses = ['enero', 'febrero','marzo'];
+	const meses2 = ['mayo', 'junio','julio'];
+	const meses3 = meses.concat(meses2);
+	const meses4 = [...meses,...meses2];
+	console.log(meses3);
+	console.log(meses4);
+	>>[ 'enero', 'febrero', 'marzo', 'mayo', 'junio', 'julio' ]
+	>>[ 'enero', 'febrero', 'marzo', 'mayo', 'junio', 'julio' ]
+
+metodo para buscar algo en un array, tiene en cuenta las mayusculas y minusculas
+	let meses = ['Enero', 'Febrero', 'Marzo', 'Abril'];
+	let existe = meses.includes('Enero');
+	console.log(existe);
+	>>true
+
+metodos para array de objetos
+	//find = busca un valor de una llave y devuelve el objeto
+	//some = busca un valor de una llave y devuelve false o true
+	//findIndex = busca un valor de una llave y devuelve la posicion del objeto, sino esta -1
+	//filter = busca un valor de una llave y devuelve los objetos
+	//reduce = es para totalizar varios valores en una sola variable
+
+	const articulos = [
+		{ nombre : 'Monitor 20 Pulgadas', precio : 500},
+		{ nombre : 'Televisor 50 Pulgadas', precio : 700},
+		{ nombre : 'Tablet', precio : 300},
+		{ nombre : 'Audifonos', precio : 200},
+		{ nombre : 'Teclado', precio : 50},
+		{ nombre : 'Celular', precio : 500},
+		{ nombre : 'Bocinas', precio : 300},
+		{ nombre : 'Laptop', precio : 900}
+	];
+
+	let articuloFind = articulos.find(articulo => articulo.nombre === 'Celular');
+	console.log(articuloFind);
+	>>{ nombre: 'Celular', precio: 500 }
+
+	let articuloSome = articulos.some(articulo => articulo.nombre === 'Celular');
+	console.log(articuloSome);
+	>>true
+
+	let articuloFindIndex = articulos.findIndex(articulo => articulo.nombre === 'Celular');
+	console.log(articuloFindIndex);
+	>>5
+
+	let articuloFilter = articulos.filter(articulo => articulo.precio >= 500);
+	console.log(articuloFilter);
+	>>[
+			{ nombre: 'Monitor 20 Pulgadas', precio: 500 },  
+			{ nombre: 'Televisor 50 Pulgadas', precio: 700 },
+			{ nombre: 'Celular', precio: 500 },
+			{ nombre: 'Laptop', precio: 900 }
+		]
+	
+	let articuloReduce = articulos.reduce((total, articulo)=> total + articulo.precio,0) //cero es posicio
+	console.log(articuloReduce);
+	>>3450
+
+fucion con valor por defecto
+	function saludar(nombre = "NN", apellido = 'Desconocido'){
+		console.log(`Hola ${nombre} ${apellido}`);
+	}
+	saludar('Natan');
+	>>Hola Natan Desconocido
+
+funciones flecha
+	const sumar = (num1, num2)=>{
+		return num1 + num2;
+	}
+	const sumar2 = (num1 , num2)=> num1+num2
+	console.log(sumar(2,4));
+	console.log(sumar2(2,4));
+	>>6
+	>>6
+
+switch
+	const metodoPago = 'efectivo';
+
+	switch(metodoPago){
+		case 'efectivo':
+			console.log(`pago con ${metodoPago}`);
+			break;
+		case 'cheque':
+			console.log(`pago con ${metodoPago} revisar si tiene fondos`);
+			break;
+		case 'tarjeta':
+			console.log(`pago con ${metodoPago} esperar un mometo`);
+			break;
+		default:
+			console.log('aun no ha pagado');
+			break;
+	}
+	>>pago con efectivo
+
+condicional ternario
+	const validar = true;
+	const validar2 = true;
+	console.log(validar && validar2 ? 'es verdadero' : 'es falso');
+	>>es verdadero
+
+ciclo for
+	for(let i = 0 ; i < 3 ; i++){
+		console.log(i);
+	}
+	>>0
+	>>1
+	>>2
+
+	let meses = ['enero', 'febrero', 'marzo'];
+	for(let mes of meses){
+		console.log(mes);
+	}
+	enero  
+	febrero
+	marzo  
+
+
+ciclo while => valida i ejecuta
+	let i = 0;
+	while (i<3) {
+		console.log(i);
+		i++;
+	}
+	>>0
+	>>1
+	>>2
+
+ciclo do while => ejecuta y luego valida
+	let i = 0;
+	do{
+		console.log(i);
+		i++;
+	}while (i<3)
+	>>0
+	>>1
+	>>2
+
+
+callback para esperar tiempo
+
+	console.log('inicio');
+	setTimeout(function(){
+		console.log('callback');
+	},5000);
+	console.log('fin');
+	>>inicio
+	>>fin
+	>>callback
+
+	let getUsuarioById = (id, callback)=>{
+		let nombre = 'velen';
+		let usuario = {
+			nombre,
+			id
+		};
+
+		setTimeout(()=>{
+			callback(usuario);
+		},1500)
+	}
+
+	getUsuarioById(5, usuario => console.log('El usuario es', usuario));
+	>>El usuario es { nombre: 'velen', id: 5 }
+
+callback buscar empleado
+
+	let empleados = [
+		{id: 1, nombre: 'Miguel'},
+		{id: 2, nombre: 'Yenny'},
+		{id: 3, nombre: 'Maria'}
+	]
+
+	let getEmpleado = (id,callback) =>{
+		// buscar el empleado
+		let empleadoBD = empleados.find( empleado => empleado.id == id);
+		// validar si existe
+		if(empleadoBD){
+			// si existe enviar usuario
+			callback(null,empleadoBD);
+		}else{
+			// si no existe enviar error
+			callback(`empleado con id: ${id} no existe`);
+		}
+	}
+
+	let idBuscado = 4;
+
+	getEmpleado(idBuscado, (err, empleado)=>{
+		if(err) return console.log(err);
+		console.log(empleado);
+	});
+
+	>>empleado con id: 4 no existe (idBuscado=4);
+	>>{ id: 3, nombre: 'Maria' } (idBuscado=3);
+
+promesa buscar empleado
+
+	let getEmpleado =(id)=>{
+		//parametro 1 es bien parametro 2 es mal
+		return new Promise((resolve, reject)=>{
+
+			// buscar empleado
+			let empleadoBD = empleados.find(empleado => empleado.id==id);
+
+			//validar en una fila
+			//(empleadoBD) ? resolve(empleadoBD) : reject(`No existe empleado con id: ${id}`);
+
+			//validar si existe empleado
+			if(!empleadoBD){ 
+
+				// si no existe mandar reject
+				reject(`No existe empleado con id: ${id}`);
+			}else{
+
+				// si existe mandar resolve
+				resolve(empleadoBD);
+			}
+		})
+	}
+
+	//forma 1 de recibir error
+
+	getEmpleado(4)
+		.then(empleado=>{
+
+			// si existe empleado entrar aca
+			console.log(empleado);
+		})
+		.catch(err=>{
+
+			// si no existe empleado entrar aca
+			console.log(err);
+		});
+
+	//forma 2 de recibir error
+	getEmpleado(4)
+		.then(empleado=>{
+				console.log(empleado);
+			},err=>{
+				console.log(err);
+			}
+		);
